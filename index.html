@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisa Glam Collection | Official Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glam: {
+                            50: '#FAF5FF',
+                            100: '#F3E8FF',
+                            200: '#E9D5FF',
+                            500: '#8B5CF6',
+                            800: '#5B21B6',
+                            900: '#4C1D95',
+                            dark: '#2E1065',
+                        },
+                        gold: {
+                            100: '#FEF3C7',
+                            400: '#F59E0B',
+                            500: '#D97706',
+                            600: '#B45309',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+        .luxury-gradient {
+            background: radial-gradient(circle at top right, #FDF4FF 0%, #F5F3FF 50%, #FAF5FF 100%);
+        }
+        .hero-pattern {
+            background-color: #FAF5FF;
+            background-image: radial-gradient(#8B5CF6 0.5px, transparent 0.5px), radial-gradient(#8B5CF6 0.5px, #FAF5FF 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.05;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="luxury-gradient text-slate-800 font-sans min-h-screen flex flex-col antialiased">
+
+    <div class="bg-gradient-to-r from-glam-900 to-glam-800 text-white text-xs py-2 px-4 text-center font-medium tracking-wide flex justify-center items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>DELIVERING THROUGHOUT ZAMBIA • ORDER DIRECTLY VIA WHATSAPP</span>
+    </div>
+
+    <header class="glass-nav sticky top-0 z-40 w-full transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-glam-800 to-glam-900 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V9a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2zM12 7V3m0 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" />
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-tight text-glam-dark flex items-center gap-1">
+                        Kisa<span class="text-gold-500 font-normal italic font-sans text-xl">Glam</span>
+                    </span>
+                    <span class="block text-[10px] tracking-widest text-glam-500 font-bold uppercase -mt-1">Collection</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-3">
+                <button onclick="openModal('netlifyTroubleModal')" class="hidden md:flex items-center gap-2 text-xs font-bold px-4 py-2 bg-purple-100 hover:bg-purple-200 text-purple-900 rounded-full transition-colors shadow-sm">
+                    <i data-lucide="rocket" class="w-4 h-4 text-purple-700"></i>
+                    <span>Launch Guide</span>
+                </button>
+                
+                <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-white border border-purple-100 shadow-sm hover:shadow-md hover:border-glam-200 transition-all group">
+                    <i data-lucide="shopping-bag" class="w-6 h-6 text-glam-900 group-hover:scale-105 transition-transform"></i>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-gold-500 text-white font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-purple-50 via-white to-transparent">
+        <div class="absolute inset-0 hero-pattern opacity-10 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold-100 text-gold-600 text-xs font-bold uppercase tracking-wider">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        Signature Luxury & Style
+                    </div>
+                    <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-glam-dark leading-tight">
+                        Beauty in every <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-glam-900 to-purple-600 italic">Detail</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 max-w-xl mx-auto lg:mx-0">
+                        Indulge in our exquisite collection of long-lasting mists, luxurious sprays, and delightful statement accessories. Created to make you feel beautiful and smell absolutely irresistible.
+                    </p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#catalogue" class="px-8 py-4 bg-gradient-to-r from-glam-900 to-glam-800 hover:from-glam-800 hover:to-glam-900 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 flex items-center gap-3">
+                            <i data-lucide="grid" class="w-5 h-5"></i>
+                            Browse Catalogue
+                        </a>
+                        <button onclick="toggleStylist()" class="px-8 py-4 bg-white hover:bg-purple-50 text-glam-900 font-bold rounded-full border border-purple-200 shadow-sm hover:shadow transition-all hover:-translate-y-0.5 flex items-center gap-3">
+                            <i data-lucide="message-square" class="w-5 h-5 text-glam-500"></i>
+                            Consult AI Stylist
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-purple-100 max-w-md mx-auto lg:mx-0">
+                        <div class="text-center lg:text-left">
+                            <span class="block text-xl font-bold text-glam-900">Premium</span>
+                            <span class="text-xs text-slate-500">Quality Assured</span>
+                        </div>
+                        <div class="text-center lg:text-left border-x border-purple-100 px-4">
+                            <span class="block text-xl font-bold text-glam-900">Affordable</span>
+                            <span class="text-xs text-slate-500">Great Value Prices</span>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <span class="block text-xl font-bold text-glam-900">Fast Order</span>
+                            <span class="text-xs text-slate-500">Via WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative font-sans">
+                    <div class="absolute -inset-1 rounded-full bg-gradient-to-tr from-purple-300 to-gold-400 opacity-30 blur-2xl -z-10"></div>
+                    <div class="bg-white rounded-3xl p-6 shadow-2xl border border-purple-100 relative overflow-hidden">
+                        <div class="text-center border-b border-purple-100 pb-4 mb-6">
+                            <h3 class="font-serif text-xl font-bold text-glam-dark">KISA GLAM COLLECTION</h3>
+                            <p class="text-xs italic text-gold-600 font-medium">Scents • Style • You</p>
+                        </div>
+                        <div class="relative rounded-2xl bg-purple-50 aspect-[4/5] overflow-hidden flex items-center justify-center">
+                            <img src="kisa%20poster%20final.png" alt="Kisa Glam Collection Showcase" class="absolute inset-0 w-full h-full object-cover z-10" onerror="this.style.display='none'">
+                            <div class="text-center p-6 space-y-4">
+                                <div class="relative w-36 h-36 mx-auto">
+                                    <div class="absolute inset-0 bg-purple-300 rounded-full mix-blend-multiply filter blur-md opacity-70 animate-blob"></div>
+                                    <svg class="w-full h-full text-glam-900 relative z-10" viewBox="0 0 100 100" fill="none">
+                                        <rect x="35" y="35" width="30" height="45" rx="6" fill="#F5F3FF" stroke="#4C1D95" stroke-width="2"/>
+                                        <rect x="42" y="20" width="16" height="15" rx="2" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/>
+                                        <path d="M45 10 H55" stroke="#B45309" stroke-width="3" stroke-linecap="round"/>
+                                        <circle cx="50" cy="55" r="8" fill="#F43F5E" opacity="0.4"/>
+                                        <text x="50" y="60" fill="#4C1D95" font-family="serif" font-size="6" font-weight="bold" text-anchor="middle">YARA</text>
+                                    </svg>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="font-serif text-lg font-bold text-glam-dark">Featured Yara Mists</p>
+                                    <p class="text-xs text-slate-500">Premium packages starting at <span class="text-gold-600 font-bold">K180</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute top-8 right-8 bg-purple-900 text-white font-bold text-xs px-3 py-1.5 rounded-full shadow-md uppercase tracking-wider">
+                            Top Seller
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <main id="catalogue" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow">
+        <div class="text-center space-y-3 mb-12">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-glam-dark">Explore Our Boutique Catalogue</h2>
+            <div class="w-16 h-1 bg-gold-500 mx-auto rounded-full"></div>
+            <p class="text-slate-500 text-sm max-w-md mx-auto">Select premium items to build your bag. Checkout directly to WhatsApp to secure your custom order.</p>
+        </div>
+
+        <div class="flex justify-center gap-2 mb-10 overflow-x-auto pb-2 no-scrollbar">
+            <button onclick="filterCategory('all')" id="tab-all" class="category-tab active px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm bg-glam-900 text-white">
+                All Collections
+            </button>
+            <button onclick="filterCategory('scents')" id="tab-scents" class="category-tab px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm bg-white border border-purple-100 text-slate-600 hover:bg-purple-50">
+                Signature Scents & Mists
+            </button>
+            <button onclick="filterCategory('accessories')" id="tab-accessories" class="category-tab px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm bg-white border border-purple-100 text-slate-600 hover:bg-purple-50">
+                Glam Accessories
+            </button>
+        </div>
+
+        <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+    </main>
+
+    <div id="cartSidebar" class="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-l border-purple-100">
+        <div class="p-6 border-b border-purple-100 flex justify-between items-center bg-purple-50">
+            <div class="flex items-center gap-2">
+                <i data-lucide="shopping-bag" class="w-5 h-5 text-glam-900"></i>
+                <h3 class="font-bold text-lg text-glam-dark">Your Glam Bag</h3>
+            </div>
+            <button onclick="toggleCart()" class="p-2 hover:bg-purple-100 text-slate-500 rounded-full transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="cartItems" class="flex-grow overflow-y-auto p-6 space-y-4 no-scrollbar">
+            <div id="emptyCartMessage" class="h-full flex flex-col justify-center items-center text-center space-y-4 text-slate-400">
+                <i data-lucide="package-open" class="w-16 h-16 text-purple-200"></i>
+                <div>
+                    <p class="font-medium text-slate-500">Your bag is empty</p>
+                    <p class="text-xs">Add gorgeous mists or custom hairpins to begin!</p>
+                </div>
+                <button onclick="toggleCart()" class="px-5 py-2.5 bg-glam-900 hover:bg-glam-800 text-white text-xs font-bold rounded-full transition-colors">
+                    Start Shopping
+                </button>
+            </div>
+        </div>
+
+        <div class="p-6 border-t border-purple-100 space-y-4 bg-purple-50/50">
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-500 font-medium">Subtotal:</span>
+                <span id="cartSubtotal" class="font-serif text-xl font-bold text-glam-dark">K0.00</span>
+            </div>
+            
+            <div class="space-y-2">
+                <button onclick="checkoutWhatsApp('+260962933737')" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-all shadow flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.59 2.028 14.11 1.01 11.487 1.01c-5.462 0-9.91 4.444-9.913 9.878-.002 2.035.546 4.023 1.591 5.773L2.12 21.87l5.3-1.39s.001 0 .002-.001z"/>
+                    </svg>
+                    Order via MTN (+260962)
+                </button>
+                <button onclick="checkoutWhatsApp('+260777611984')" class="w-full py-2.5 bg-purple-900 hover:bg-purple-800 text-white text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+                    Alternative Line (+260777)
+                </button>
+            </div>
+            <p class="text-[10px] text-center text-slate-400">Clicking triggers an instant, pre-filled WhatsApp message outlining your order items and total for secure local processing.</p>
+        </div>
+    </div>
+
+    <div id="stylistWidget" class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+        <div id="chatWindow" class="hidden w-80 sm:w-96 h-[480px] bg-white rounded-2xl shadow-2xl border border-purple-100 flex-col overflow-hidden mb-4 transition-all duration-300 transform scale-95 opacity-0">
+            <div class="bg-gradient-to-r from-glam-900 to-glam-800 text-white p-4 flex justify-between items-center shadow-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gold-400/20 flex items-center justify-center text-gold-400 border border-gold-400/30">
+                        <i data-lucide="sparkles" class="w-5 h-5 animate-pulse"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm">Kisa's AI Stylist</h4>
+                        <span class="text-[10px] text-purple-200 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online & Ready
+                        </span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1">
+                    <button onclick="clearChat()" class="text-white/80 hover:text-white hover:bg-white/10 p-1.5 rounded-full transition-colors" title="Clear Conversation">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="toggleStylist()" class="text-white/80 hover:text-white hover:bg-white/10 p-1.5 rounded-full transition-colors">
+                        <i data-lucide="minus" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="chatMessages" class="flex-grow overflow-y-auto p-4 space-y-3 bg-purple-50/30 no-scrollbar">
+                <div class="flex gap-2 max-w-[85%]">
+                    <div class="bg-white border border-purple-100 rounded-2xl rounded-tl-none p-3 shadow-sm text-sm break-words whitespace-pre-wrap">
+                        <p class="font-bold text-glam-900 text-xs mb-1">Mimi (AI Assistant)</p>
+                        Muli bwanji! I am Mimi, your beauty and fragrance stylist for Kisa Glam Collection. ✨
+                        
+                        Tell me what mood you're going for, or what your budget is, and I'll find you the perfect mists or accessories! How can I help you sparkle today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 border-t border-purple-100 bg-white">
+                <form id="chatForm" onsubmit="sendChatMessage(event)" class="flex gap-2">
+                    <input type="text" id="chatInput" placeholder="Ask about scents, hair clips, or budgets..." class="flex-grow px-4 py-2 border border-purple-100 rounded-full text-sm focus:outline-none focus:border-glam-500 bg-purple-50/50">
+                    <button type="submit" class="p-2.5 bg-glam-900 hover:bg-glam-800 text-white rounded-full transition-colors">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <button onclick="toggleStylist()" class="p-4 bg-gradient-to-r from-glam-900 to-glam-800 hover:from-glam-800 hover:to-glam-900 text-white rounded-full shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2 group relative">
+            <span class="absolute -inset-1 rounded-full bg-glam-500 animate-ping opacity-25"></span>
+            <i data-lucide="sparkles" class="w-6 h-6 text-gold-400 group-hover:rotate-12 transition-transform"></i>
+            <span class="font-bold text-sm pr-1">AI Personal Stylist</span>
+        </button>
+    </div>
+
+    <footer class="bg-glam-dark text-purple-100 py-12 mt-auto border-t border-purple-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <span class="font-serif text-2xl font-bold tracking-tight text-white flex items-center gap-1">
+                        Kisa<span class="text-gold-400 font-normal italic font-sans text-xl">Glam</span>
+                    </span>
+                    <p class="text-xs text-purple-300">Bringing ultimate fragrance and high-end statement beauty to Lusaka and beyond. Scents. Style. You.</p>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-bold text-sm text-white uppercase tracking-wider">Contact & Location</h4>
+                    <p class="text-xs text-purple-300 flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-gold-400"></i>
+                        Lusaka, Zambia
+                    </p>
+                    <p class="text-xs text-purple-300 flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4 text-gold-400"></i>
+                        +260 962933737
+                    </p>
+                    <p class="text-xs text-purple-300 flex items-center gap-2">
+                        <i data-lucide="phone-call" class="w-4 h-4 text-gold-400"></i>
+                        +260 777611984
+                    </p>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-bold text-sm text-white uppercase tracking-wider">Store Info</h4>
+                    <button onclick="openModal('netlifyTroubleModal')" class="text-xs text-purple-300 hover:text-white transition-colors flex items-center gap-1.5 flex-wrap">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i> Site Launch Guide
+                    </button>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-bold text-sm text-white uppercase tracking-wider">How to Order</h4>
+                    <p class="text-xs text-purple-300">Add products to your bag, click "Checkout," and send your instant order on WhatsApp. We accept Mobile Money (Airtel/MTN) & Cash on Delivery.</p>
+                </div>
+            </div>
+            <div class="border-t border-purple-900 mt-8 pt-8 text-center text-[10px] text-purple-400 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 Kisa Glam Collection. All Rights Reserved. Designed for Zambia.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="netlifyTroubleModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl relative overflow-hidden flex flex-col">
+            <button onclick="closeModal('netlifyTroubleModal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 p-1.5 rounded-full hover:bg-slate-100 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="text-center space-y-2 mb-6">
+                <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                    <i data-lucide="rocket" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-slate-900">Your Site is Ready!</h3>
+                <p class="text-sm text-slate-500">Your code is working beautifully on GitHub Pages.</p>
+            </div>
+            <button onclick="closeModal('netlifyTroubleModal')" class="w-full py-3 bg-glam-900 hover:bg-glam-800 text-white font-bold rounded-xl transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = "";
+
+        const products = [
+            {
+                id: 'p1',
+                name: 'Premium Yara Fragrance Mist & Spray Set',
+                price: 180,
+                category: 'scents',
+                image: 'spray & mist @k180.jpeg',
+                subtitle: 'YARA BY MYSTICAL',
+                description: 'Full luxury package containing premium Yara Eau De Parfum Mist (250ml) in its iconic matching presentation box.',
+                hasBadge: true,
+                badgeText: 'Ultimate Scent',
+                svgFallback: `
+                    <svg class="w-32 h-32 text-glam-900" viewBox="0 0 100 100" fill="none">
+                        <rect x="35" y="32" width="30" height="48" rx="8" fill="#FDF4FF" stroke="#4C1D95" stroke-width="2"/>
+                        <rect x="42" y="16" width="16" height="16" rx="3" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/>
+                        <rect x="46" y="8" width="8" height="8" rx="1" fill="#FEF3C7" stroke="#B45309" stroke-width="1.5"/>
+                        <circle cx="50" cy="56" r="10" fill="#F472B6" opacity="0.3"/>
+                        <text x="50" y="60" fill="#4C1D95" font-family="serif" font-size="7" font-weight="bold" text-anchor="middle">YARA</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'p2',
+                name: 'Haya Body Mist (250ml)',
+                price: 90,
+                category: 'scents',
+                image: 'Body mist @k90.jpeg',
+                subtitle: 'HAYA BY MYSTICAL',
+                description: 'Sparkling fresh body mist in standard bottle with golden security collar. Long-lasting allure.',
+                hasBadge: false,
+                svgFallback: `
+                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
+                        <rect x="38" y="30" width="24" height="52" rx="12" fill="#FAF5FF" stroke="#4C1D95" stroke-width="2"/>
+                        <rect x="42" y="14" width="16" height="16" rx="4" fill="#E9D5FF" stroke="#4C1D95" stroke-width="2"/>
+                        <circle cx="50" cy="56" r="6" fill="#F472B6" opacity="0.4"/>
+                        <text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">HAYA</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'p3',
+                name: 'Verlona Sganodol Mist (250ml)',
+                price: 90,
+                category: 'scents',
+                image: 'Body mist @k90.jpeg',
+                subtitle: 'VERLONA BY MYSTICAL',
+                description: 'Rich oriental scent profile with sophisticated woody undertones. Essential daily mist.',
+                hasBadge: false,
+                svgFallback: `
+                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
+                        <rect x="38" y="30" width="24" height="52" rx="12" fill="#FDF2F8" stroke="#4C1D95" stroke-width="2"/>
+                        <rect x="42" y="14" width="16" height="16" rx="4" fill="#FCE7F3" stroke="#4C1D95" stroke-width="2"/>
+                        <circle cx="50" cy="56" r="6" fill="#EC4899" opacity="0.3"/>
+                        <text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">VERLONA</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'p4',
+                name: 'Yara Body Mist (250ml)',
+                price: 90,
+                category: 'scents',
+                image: 'Body mist @k90.jpeg',
+                subtitle: 'YARA SINGLE BOTTLE',
+                description: 'Stand-alone Yara fragrance mist. Experience the same iconic scent at an accessible price point.',
+                hasBadge: true,
+                badgeText: 'Best Seller',
+                svgFallback: `
+                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
+                        <rect x="38" y="30" width="24" height="52" rx="12" fill="#FAF5FF" stroke="#4C1D95" stroke-width="2"/>
+                        <rect x="42" y="14" width="16" height="16" rx="4" fill="#FEF3C7" stroke="#B45309" stroke-width="1.5"/>
+                        <circle cx="50" cy="56" r="6" fill="#EC4899" opacity="0.3"/>
+                        <text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">YARA</text>
+                    </svg>
+                `
+            },
+            {
+                id: 'p5',
+                name: 'Pretty Miss Betty Daisy Lip Gloss',
+                price: 20,
+                category: 'accessories',
+                image: 'lip gloss @K20.jpeg',
+                subtitle: 'FLOWER LIP SHINE',
+                description: 'Adorable individual lip gloss tube adorned with a signature pastel flower crown cap. High gloss shine.',
+                hasBadge: false,
+                svgFallback: `
+                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
+                        <rect x="42" y="40" width="16" height="42" rx="4" fill="#FFF1F2" stroke="#4C1D95" stroke-width="2"/>
+                        <rect x="38" y="24" width="24" height="16" rx="4" fill="#A7F3D0" stroke="#047857" stroke-width="1.5"/>
+                        <circle cx="50" cy="32" r="5" fill="#FCD34D"/>
+                        <circle cx="45" cy="32" r="3" fill="#FFFFFF"/>
+                        <circle cx="55" cy="32" r="3" fill="#FFFFFF"/>
+                        <circle cx="50" cy="27" r="3" fill="#FFFFFF"/>
+                        <circle cx="50" cy="37" r="3" fill="#FFFFFF"/>
+                    </svg>
+                `
+            },
+            {
+                id: 'p6',
+                name: 'Chic Butterfly Hair Pins Set',
+                price: 20,
+                category: 'accessories',
+                image: 'hair pins @k20.jpeg',
+                subtitle: 'PREMIUM ACCENT ACCESSORIES',
+                description: 'Stunning butterfly-wing hair pins set in gold metal. Accents any gorgeous styling.',
+                hasBadge: true,
+                badgeText: 'New Arrival',
+                svgFallback: `
+                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
+                        <path d="M50 50 C30 20, 20 40, 50 60 C30 80, 20 60, 50 50 Z" fill="#FBCFE8" stroke="#4C1D95" stroke-width="2"/>
+                        <path d="M50 50 C70 20, 80 40, 50 60 C70 80, 80 60, 50 50 Z" fill="#FBCFE8" stroke="#4C1D95" stroke-width="2"/>
+                        <rect x="48" y="42" width="4" height="20" rx="2" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/>
+                        <path d="M48 42 C45 35, 42 38, 45 38" stroke="#B45309" stroke-width="1.5"/>
+                        <path d="M52 42 C55 35, 58 38, 55 38" stroke="#B45309" stroke-width="1.5"/>
+                    </svg>
+                `
+            },
+            {
+                id: 'p7',
+                name: 'Sweet Flower Hair Pins Pack',
+                price: 15,
+                category: 'accessories',
+                image: 'hair pin @k15.jpeg',
+                subtitle: 'BOUTIQUE PEARL ACCENTS',
+                description: 'Carded set of daily wear hair pins featuring colorful tropical plumeria flowers.',
+                hasBadge: false,
+                svgFallback: `
+                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
+                        <circle cx="50" cy="40" r="16" fill="#FEF08A" stroke="#4C1D95" stroke-width="1.5"/>
+                        <circle cx="50" cy="40" r="6" fill="#F97316"/>
+                        <path d="M50 56 L50 90 M47 56 L47 88" stroke="#4C1D95" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                `
+            }
+        ];
+
+        let cart = [];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCatalogue(products);
+            lucide.createIcons();
+        });
+
+        function renderCatalogue(productsList) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            productsList.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl border border-purple-100 p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group relative overflow-hidden';
+                
+                const encodedImgUrl = encodeURIComponent(product.image).replace(/%40/g, '@');
+
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[9px] font-bold text-glam-500 uppercase tracking-widest">${product.subtitle}</span>
+                            ${product.hasBadge ? `
+                                <span class="bg-gold-100 text-gold-600 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                                    ${product.badgeText}
+                                </span>
+                            ` : ''}
+                        </div>
+
+                        <div class="relative bg-purple-50 rounded-2xl aspect-[4/3] overflow-hidden flex items-center justify-center">
+                            <img src="${encodedImgUrl}" alt="${product.name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all z-10" id="img-${product.id}" onerror="fallbackToSvg('${product.id}')">
+                            <div id="fallback-${product.id}" class="hidden w-full h-full flex items-center justify-center transition-opacity">
+                                ${product.svgFallback}
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h3 class="font-serif text-lg font-bold text-glam-dark leading-tight group-hover:text-glam-900 transition-colors">${product.name}</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">${product.description}</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-5 mt-4 border-t border-purple-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Price</span>
+                            <span class="font-serif text-xl font-bold text-glam-dark">K${product.price}.00</span>
+                        </div>
+                        <button onclick="addToCart('${product.id}')" class="px-5 py-2.5 bg-gradient-to-r from-glam-900 to-glam-800 hover:from-glam-800 hover:to-glam-900 text-white font-bold rounded-full text-xs shadow-md transition-all flex items-center gap-2">
+                            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                            Add to Bag
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function fallbackToSvg(id) {
+            const imgEl = document.getElementById(`img-${id}`);
+            const fallbackEl = document.getElementById(`fallback-${id}`);
+            if (imgEl) imgEl.style.display = 'none';
+            if (fallbackEl) fallbackEl.classList.remove('hidden');
+        }
+
+        function filterCategory(category) {
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.className = 'category-tab px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm bg-white border border-purple-100 text-slate-600 hover:bg-purple-50';
+            });
+            
+            const activeTab = document.getElementById(`tab-${category}`);
+            activeTab.className = 'category-tab active px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-sm bg-glam-900 text-white';
+
+            if (category === 'all') {
+                renderCatalogue(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderCatalogue(filtered);
+            }
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            showToast(`${product.name} added to your Bag!`);
+            updateCartUI();
+        }
+
+        function updateCartQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const emptyMessage = document.getElementById('emptyCartMessage');
+            const cartCount = document.getElementById('cartCount');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+
+            const totalQty = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+            cartCount.textContent = totalQty;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '';
+                cartItemsContainer.appendChild(emptyMessage);
+                cartSubtotal.textContent = 'K0.00';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const encodedImgUrl = encodeURIComponent(item.image).replace(/%40/g, '@');
+                const cost = item.price * item.quantity;
+                subtotal += cost;
+
+                const row = document.createElement('div');
+                row.className = 'p-3 bg-white border border-purple-100 rounded-2xl flex gap-3 items-center relative group shadow-sm';
+                row.innerHTML = `
+                    <div class="w-16 h-16 bg-purple-50 rounded-xl overflow-hidden flex items-center justify-center relative flex-shrink-0">
+                        <img src="${encodedImgUrl}" alt="${item.name}" class="w-full h-full object-cover z-10" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <div class="hidden scale-75">${item.svgFallback}</div>
+                    </div>
+                    <div class="flex-grow space-y-1">
+                        <h4 class="font-bold text-xs text-slate-800 leading-tight">${item.name}</h4>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-glam-900 font-bold">K${item.price}.00</span>
+                            <div class="flex items-center gap-2 border border-purple-100 rounded-full px-2 py-1 bg-purple-50/50">
+                                <button onclick="updateCartQuantity('${item.id}', -1)" class="p-1 hover:bg-white rounded-full text-slate-500 transition-all">
+                                    <i data-lucide="minus-circle" class="w-3.5 h-3.5"></i>
+                                </button>
+                                <span class="text-xs font-bold text-slate-700 min-w-4 text-center">${item.quantity}</span>
+                                <button onclick="updateCartQuantity('${item.id}', 1)" class="p-1 hover:bg-white rounded-full text-slate-500 transition-all">
+                                    <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(row);
+            });
+
+            cartSubtotal.textContent = `K${subtotal}.00`;
+            lucide.createIcons();
+        }
+
+        function checkoutWhatsApp(number) {
+            if (cart.length === 0) {
+                showToast("Your shopping bag is empty. Please add items first.");
+                return;
+            }
+
+            let message = `🌸 *Kisa Glam Collection Order* 🌸\n\nHello, I would like to place an order from your digital catalogue:\n\n`;
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const cost = item.price * item.quantity;
+                subtotal += cost;
+                message += `${index + 1}. *${item.name}* (Qty: ${item.quantity}) - K${cost}.00\n`;
+            });
+
+            message += `\n💵 *Total Bill:* K${subtotal}.00\n`;
+            message += `📍 *Delivery Location:* [Please enter your delivery city/street here]\n`;
+            message += `📞 *Preferred contact line:* [Please provide phone/alternate line]\n\n`;
+            message += `Thank you! Please confirm delivery availability.`;
+
+            // Clean the number and ensure it formats to a clean Zambian +260 code format
+            let cleanNumber = number.replace(/\D/g, ''); // Removes all non-digits (including the plus sign)
+            if (cleanNumber.startsWith('0')) {
+                cleanNumber = '260' + cleanNumber.substring(1); // Replaces leading 0 with 260
+            } else if (!cleanNumber.startsWith('260')) {
+                cleanNumber = '260' + cleanNumber; // Prepends 260 if it's missing entirely
+            }
+
+            // WhatsApp API prefers just the raw numeric string starting with the country code
+            const url = `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        function toggleStylist() {
+            const chatWin = document.getElementById('chatWindow');
+            if (chatWin.classList.contains('hidden')) {
+                chatWin.classList.remove('hidden');
+                setTimeout(() => {
+                    chatWin.classList.remove('scale-95', 'opacity-0');
+                    chatWin.classList.add('scale-100', 'opacity-100');
+                }, 50);
+            } else {
+                chatWin.classList.remove('scale-100', 'opacity-100');
+                chatWin.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    chatWin.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function clearChat() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = `
+                <div class="flex gap-2 max-w-[85%]">
+                    <div class="bg-white border border-purple-100 rounded-2xl rounded-tl-none p-3 shadow-sm text-sm break-words whitespace-pre-wrap">
+                        <p class="font-bold text-glam-900 text-xs mb-1">Mimi (AI Assistant)</p>
+                        I've cleared our chat! ✨ 
+                        
+                        Tell me what mood you're going for, or what your budget is, and I'll find you the perfect mists or accessories! How can I help you sparkle today?
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        async function sendChatMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const messageText = input.value.trim();
+            if (!messageText) return;
+
+            appendMessage(messageText, true);
+            input.value = '';
+
+            const loaderId = appendMessage("Mimi is typing styling recommendations...", false, true);
+
+            const systemPrompt = `
+                You are Mimi, the ultimate beauty and fragrance bestie for Kisa Glam Collection in Lusaka, Zambia! 
+                Your personality is vibrant, warm, fashionable, and super helpful. You treat every customer like a VIP.
+                Use emojis, be conversational, and always explain *why* you recommend a product. Keep responses to 2-3 short, distinct paragraphs so they are easy to read. Use the Kwacha (K) for prices.
+                
+                Our Available Products:
+                1. Premium Yara Fragrance Mist & Spray Set - K180: Top-shelf gift package with Eau de Parfum & matching collector box.
+                2. Individual Body Mists - K90 (250ml bottles): Available in "Haya", "Verlona Sganodol", and "Yara". Long lasting.
+                3. Pretty Miss Betty Daisy Lip Gloss - K20: Individual cute tubes with pastel flower crowns. High sheen gloss.
+                4. Chic Butterfly Hair Pins Set - K20: Beautiful wings set in elegant gold alloy.
+                5. Sweet Flower Hair Pins Pack - K15: Pack of colorful plumeria floral clips.
+
+                Instructions:
+                - If someone wants to look "cute" or "fresh", match them with the right mists and lip gloss/clips.
+                - Guide them clearly to add items to their bag and click checkout when they are ready. 
+                - Never invent products. If we don't have it, gently pivot to something we do have!
+            `;
+
+            let success = false;
+            let responseText = "";
+            let retries = 5;
+            let delay = 1000;
+
+            while (retries > 0 && !success) {
+                try {
+                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: messageText }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] }
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I apologize, sweetie. My styling compass is a bit dusty! Please ask me again.";
+                        success = true;
+                    } else {
+                        throw new Error("HTTP connection issue");
+                    }
+                } catch (err) {
+                    retries--;
+                    if (retries === 0) {
+                        responseText = "Oh dear! My connection is struggling, but you can chat with Kisa directly by calling or messaging us on +260 962933737! 🌸";
+                    } else {
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2;
+                    }
+                }
+            }
+
+            document.getElementById(loaderId).remove();
+            appendMessage(responseText, false);
+        }
+
+        function appendMessage(text, isUser = false, isLoading = false) {
+            const container = document.getElementById('chatMessages');
+            const row = document.createElement('div');
+            const messageId = "msg-" + Math.random().toString(36).substr(2, 9);
+            row.id = messageId;
+            row.className = `flex gap-2 max-w-[85%] ${isUser ? 'ml-auto justify-end' : ''}`;
+
+            row.innerHTML = `
+                <div class="${isUser ? 'bg-glam-900 text-white rounded-tr-none' : 'bg-white border border-purple-100 rounded-tl-none text-slate-800'} rounded-2xl p-3 shadow-sm text-sm break-words whitespace-pre-wrap ${isLoading ? 'animate-pulse text-slate-400' : ''}">
+                    ${!isUser ? `<p class="font-bold text-glam-900 text-xs mb-1">Mimi (AI Stylist)</p>` : ''}${text}
+                </div>
+            `;
+            container.appendChild(row);
+            container.scrollTop = container.scrollHeight;
+            return messageId;
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = "fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-glam-dark text-white text-xs font-semibold px-5 py-3 rounded-full shadow-2xl z-50 flex items-center gap-2 animate-bounce";
+            toast.innerHTML = `<i data-lucide="info" class="w-4 h-4 text-gold-400"></i> ${message}`;
+            document.body.appendChild(toast);
+            lucide.createIcons();
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
