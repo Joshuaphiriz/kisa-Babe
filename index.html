@@ -366,139 +366,86 @@
     <script>
         const apiKey = "";
 
-        const products = [
+const products = [
             {
                 id: 'p1',
                 name: 'Premium Yara Fragrance Mist & Spray Set',
                 price: 180,
                 category: 'scents',
-                image: 'spray & mist @k180.jpeg',
+                image: 'mists.jpg', /* <-- Updated clean filename */
                 subtitle: 'YARA BY MYSTICAL',
                 description: 'Full luxury package containing premium Yara Eau De Parfum Mist (250ml) in its iconic matching presentation box.',
                 hasBadge: true,
                 badgeText: 'Ultimate Scent',
-                svgFallback: `
-                    <svg class="w-32 h-32 text-glam-900" viewBox="0 0 100 100" fill="none">
-                        <rect x="35" y="32" width="30" height="48" rx="8" fill="#FDF4FF" stroke="#4C1D95" stroke-width="2"/>
-                        <rect x="42" y="16" width="16" height="16" rx="3" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/>
-                        <rect x="46" y="8" width="8" height="8" rx="1" fill="#FEF3C7" stroke="#B45309" stroke-width="1.5"/>
-                        <circle cx="50" cy="56" r="10" fill="#F472B6" opacity="0.3"/>
-                        <text x="50" y="60" fill="#4C1D95" font-family="serif" font-size="7" font-weight="bold" text-anchor="middle">YARA</text>
-                    </svg>
-                `
+                svgFallback: `<svg class="w-32 h-32 text-glam-900" viewBox="0 0 100 100" fill="none"><rect x="35" y="32" width="30" height="48" rx="8" fill="#FDF4FF" stroke="#4C1D95" stroke-width="2"/><rect x="42" y="16" width="16" height="16" rx="3" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/><rect x="46" y="8" width="8" height="8" rx="1" fill="#FEF3C7" stroke="#B45309" stroke-width="1.5"/><circle cx="50" cy="56" r="10" fill="#F472B6" opacity="0.3"/><text x="50" y="60" fill="#4C1D95" font-family="serif" font-size="7" font-weight="bold" text-anchor="middle">YARA</text></svg>`
             },
             {
                 id: 'p2',
                 name: 'Haya Body Mist (250ml)',
                 price: 90,
                 category: 'scents',
-                image: 'Body mist @k90.jpeg',
+                image: 'mists.jpg', /* <-- Updated clean filename */
                 subtitle: 'HAYA BY MYSTICAL',
                 description: 'Sparkling fresh body mist in standard bottle with golden security collar. Long-lasting allure.',
                 hasBadge: false,
-                svgFallback: `
-                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
-                        <rect x="38" y="30" width="24" height="52" rx="12" fill="#FAF5FF" stroke="#4C1D95" stroke-width="2"/>
-                        <rect x="42" y="14" width="16" height="16" rx="4" fill="#E9D5FF" stroke="#4C1D95" stroke-width="2"/>
-                        <circle cx="50" cy="56" r="6" fill="#F472B6" opacity="0.4"/>
-                        <text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">HAYA</text>
-                    </svg>
-                `
+                svgFallback: `<svg class="w-32 h-32" viewBox="0 0 100 100" fill="none"><rect x="38" y="30" width="24" height="52" rx="12" fill="#FAF5FF" stroke="#4C1D95" stroke-width="2"/><rect x="42" y="14" width="16" height="16" rx="4" fill="#E9D5FF" stroke="#4C1D95" stroke-width="2"/><circle cx="50" cy="56" r="6" fill="#F472B6" opacity="0.4"/><text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">HAYA</text></svg>`
             },
             {
                 id: 'p3',
                 name: 'Verlona Sganodol Mist (250ml)',
                 price: 90,
                 category: 'scents',
-                image: 'Body mist @k90.jpeg',
+                image: 'mists.jpg', /* <-- Updated clean filename */
                 subtitle: 'VERLONA BY MYSTICAL',
                 description: 'Rich oriental scent profile with sophisticated woody undertones. Essential daily mist.',
                 hasBadge: false,
-                svgFallback: `
-                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
-                        <rect x="38" y="30" width="24" height="52" rx="12" fill="#FDF2F8" stroke="#4C1D95" stroke-width="2"/>
-                        <rect x="42" y="14" width="16" height="16" rx="4" fill="#FCE7F3" stroke="#4C1D95" stroke-width="2"/>
-                        <circle cx="50" cy="56" r="6" fill="#EC4899" opacity="0.3"/>
-                        <text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">VERLONA</text>
-                    </svg>
-                `
+                svgFallback: `<svg class="w-32 h-32" viewBox="0 0 100 100" fill="none"><rect x="38" y="30" width="24" height="52" rx="12" fill="#FDF2F8" stroke="#4C1D95" stroke-width="2"/><rect x="42" y="14" width="16" height="16" rx="4" fill="#FCE7F3" stroke="#4C1D95" stroke-width="2"/><circle cx="50" cy="56" r="6" fill="#EC4899" opacity="0.3"/><text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">VERLONA</text></svg>`
             },
             {
                 id: 'p4',
-                name: 'Yara Body Mist (250ml)',
-                price: 90,
+                name: 'Yara Mini Perfumes',
+                price: 50, // Update this price to whatever the minis cost!
                 category: 'scents',
-                image: 'Body mist @k90.jpeg',
-                subtitle: 'YARA SINGLE BOTTLE',
-                description: 'Stand-alone Yara fragrance mist. Experience the same iconic scent at an accessible price point.',
+                image: 'mini-perfumes.jpg', /* <-- Updated clean filename */
+                subtitle: 'YARA TRAVEL SIZE',
+                description: 'Perfect travel-sized Yara perfumes. Experience the same iconic scent on the go.',
                 hasBadge: true,
                 badgeText: 'Best Seller',
-                svgFallback: `
-                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
-                        <rect x="38" y="30" width="24" height="52" rx="12" fill="#FAF5FF" stroke="#4C1D95" stroke-width="2"/>
-                        <rect x="42" y="14" width="16" height="16" rx="4" fill="#FEF3C7" stroke="#B45309" stroke-width="1.5"/>
-                        <circle cx="50" cy="56" r="6" fill="#EC4899" opacity="0.3"/>
-                        <text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">YARA</text>
-                    </svg>
-                `
+                svgFallback: `<svg class="w-32 h-32" viewBox="0 0 100 100" fill="none"><rect x="38" y="30" width="24" height="52" rx="12" fill="#FAF5FF" stroke="#4C1D95" stroke-width="2"/><rect x="42" y="14" width="16" height="16" rx="4" fill="#FEF3C7" stroke="#B45309" stroke-width="1.5"/><circle cx="50" cy="56" r="6" fill="#EC4899" opacity="0.3"/><text x="50" y="60" fill="#4C1D95" font-family="sans-serif" font-size="5" font-weight="bold" text-anchor="middle">YARA</text></svg>`
             },
             {
                 id: 'p5',
                 name: 'Pretty Miss Betty Daisy Lip Gloss',
                 price: 20,
                 category: 'accessories',
-                image: 'lip gloss @K20.jpeg',
+                image: 'lip-gloss.jpg', /* <-- Updated clean filename */
                 subtitle: 'FLOWER LIP SHINE',
                 description: 'Adorable individual lip gloss tube adorned with a signature pastel flower crown cap. High gloss shine.',
                 hasBadge: false,
-                svgFallback: `
-                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
-                        <rect x="42" y="40" width="16" height="42" rx="4" fill="#FFF1F2" stroke="#4C1D95" stroke-width="2"/>
-                        <rect x="38" y="24" width="24" height="16" rx="4" fill="#A7F3D0" stroke="#047857" stroke-width="1.5"/>
-                        <circle cx="50" cy="32" r="5" fill="#FCD34D"/>
-                        <circle cx="45" cy="32" r="3" fill="#FFFFFF"/>
-                        <circle cx="55" cy="32" r="3" fill="#FFFFFF"/>
-                        <circle cx="50" cy="27" r="3" fill="#FFFFFF"/>
-                        <circle cx="50" cy="37" r="3" fill="#FFFFFF"/>
-                    </svg>
-                `
+                svgFallback: `<svg class="w-32 h-32" viewBox="0 0 100 100" fill="none"><rect x="42" y="40" width="16" height="42" rx="4" fill="#FFF1F2" stroke="#4C1D95" stroke-width="2"/><rect x="38" y="24" width="24" height="16" rx="4" fill="#A7F3D0" stroke="#047857" stroke-width="1.5"/><circle cx="50" cy="32" r="5" fill="#FCD34D"/><circle cx="45" cy="32" r="3" fill="#FFFFFF"/><circle cx="55" cy="32" r="3" fill="#FFFFFF"/><circle cx="50" cy="27" r="3" fill="#FFFFFF"/><circle cx="50" cy="37" r="3" fill="#FFFFFF"/></svg>`
             },
             {
                 id: 'p6',
                 name: 'Chic Butterfly Hair Pins Set',
                 price: 20,
                 category: 'accessories',
-                image: 'hair pins @k20.jpeg',
+                image: 'butterfly-clips.jpg', /* <-- Updated clean filename */
                 subtitle: 'PREMIUM ACCENT ACCESSORIES',
                 description: 'Stunning butterfly-wing hair pins set in gold metal. Accents any gorgeous styling.',
                 hasBadge: true,
                 badgeText: 'New Arrival',
-                svgFallback: `
-                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
-                        <path d="M50 50 C30 20, 20 40, 50 60 C30 80, 20 60, 50 50 Z" fill="#FBCFE8" stroke="#4C1D95" stroke-width="2"/>
-                        <path d="M50 50 C70 20, 80 40, 50 60 C70 80, 80 60, 50 50 Z" fill="#FBCFE8" stroke="#4C1D95" stroke-width="2"/>
-                        <rect x="48" y="42" width="4" height="20" rx="2" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/>
-                        <path d="M48 42 C45 35, 42 38, 45 38" stroke="#B45309" stroke-width="1.5"/>
-                        <path d="M52 42 C55 35, 58 38, 55 38" stroke="#B45309" stroke-width="1.5"/>
-                    </svg>
-                `
+                svgFallback: `<svg class="w-32 h-32" viewBox="0 0 100 100" fill="none"><path d="M50 50 C30 20, 20 40, 50 60 C30 80, 20 60, 50 50 Z" fill="#FBCFE8" stroke="#4C1D95" stroke-width="2"/><path d="M50 50 C70 20, 80 40, 50 60 C70 80, 80 60, 50 50 Z" fill="#FBCFE8" stroke="#4C1D95" stroke-width="2"/><rect x="48" y="42" width="4" height="20" rx="2" fill="#FEF3C7" stroke="#B45309" stroke-width="2"/><path d="M48 42 C45 35, 42 38, 45 38" stroke="#B45309" stroke-width="1.5"/><path d="M52 42 C55 35, 58 38, 55 38" stroke="#B45309" stroke-width="1.5"/></svg>`
             },
             {
                 id: 'p7',
                 name: 'Sweet Flower Hair Pins Pack',
                 price: 15,
                 category: 'accessories',
-                image: 'hair pin @k15.jpeg',
+                image: 'flower-pins.jpg', /* <-- Updated clean filename */
                 subtitle: 'BOUTIQUE PEARL ACCENTS',
                 description: 'Carded set of daily wear hair pins featuring colorful tropical plumeria flowers.',
                 hasBadge: false,
-                svgFallback: `
-                    <svg class="w-32 h-32" viewBox="0 0 100 100" fill="none">
-                        <circle cx="50" cy="40" r="16" fill="#FEF08A" stroke="#4C1D95" stroke-width="1.5"/>
-                        <circle cx="50" cy="40" r="6" fill="#F97316"/>
-                        <path d="M50 56 L50 90 M47 56 L47 88" stroke="#4C1D95" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                `
+                svgFallback: `<svg class="w-32 h-32" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="40" r="16" fill="#FEF08A" stroke="#4C1D95" stroke-width="1.5"/><circle cx="50" cy="40" r="6" fill="#F97316"/><path d="M50 56 L50 90 M47 56 L47 88" stroke="#4C1D95" stroke-width="2" stroke-linecap="round"/></svg>`
             }
         ];
 
